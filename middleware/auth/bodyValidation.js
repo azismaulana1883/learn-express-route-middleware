@@ -1,5 +1,3 @@
-// middleware/auth/bodyValidation.js
-
 function bodyValidation(req, res, next) {
     const { username, password, email } = req.body;
 

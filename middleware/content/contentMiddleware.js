@@ -1,9 +1,7 @@
-
-
 function contentMiddleware(req, res, next) {
-    const { article, id } = req.body;
+    const { title, description } = req.body;
 
-    if ( !article || !id) {
+    if ( !title || !description) {
         return res.status(404).json({
             message: 'Error data not complete',
             text: 'Data tidak ada',

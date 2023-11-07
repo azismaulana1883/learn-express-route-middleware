@@ -1,22 +1,81 @@
-// controllers/content/article.js
-function CreateArticle(req, res, next) {
-    
-    res.send('Article created successfully')
+const UserContents = require('../../models').Contents;
+async function CreateArticle(req, res, next) {
+    try {
+        const { title, description } = req.body;
+
+        let dataPassingToDB = {
+            title: title,
+            description: description,
+        }
+
+        let createdData = await UserContents.create(dataPassingToDB);
+
+        if (!createdData.dataValues) {
+            res.status(400).send({
+                message: 'Wrong Title or Description',
+                statusCode: 400
+            });
+        } else {
+            res.send({
+                message: 'Success add content',
+                statusCode: 200
+            });
+        }
+    } catch (error) {
+        next(error);
+    }
 }
 
-function UpdateArticle(req, res, next) {
+async function UpdateArticle(req, res, next) {
+    try {
+        const articleId = req.params.id;
+        const { title, description } = req.body;
+        const existingArticle = await UserContents.findByPk(articleId);
 
-    res.send('Article updated successfully')
+        if (!existingArticle) {
+            return res.status(404).json({
+                message: 'Article not found',
+                statusCode: 404
+            });
+        }
+
+        existingArticle.title = title;
+        existingArticle.description = description;
+        await existingArticle.save();
+
+        res.send('Article updated successfully');
+    } catch (error) {
+        next(error);
+    }
 }
 
-function DeleteArticle(req, res, next) {
+async function DeleteArticle(req, res, next) {
+    try {
+        const articleId = req.params.id; 
+        const existingArticle = await UserContents.findByPk(articleId);
 
-    res.send('Article deleted successfully')
+        if (!existingArticle) {
+            return res.status(404).json({
+                message: 'Article not found',
+                statusCode: 404
+            });
+        }
+        await existingArticle.destroy();
+
+        res.send('Article deleted successfully');
+    } catch (error) {
+        next(error);
+    }
 }
 
-function ReadArticle(req, res, next) {
+async function ReadArticle(req, res, next) {
+    try {
+        const articles = await UserContents.findAll();
 
-    res.send('Here are the articles')
+        res.json(articles);
+    } catch (error) {
+        next(error);
+    }
 }
 
 module.exports = {

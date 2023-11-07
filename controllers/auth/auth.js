@@ -1,4 +1,3 @@
-// controllers/auth/auth.js
 const UserModels = require('../../models').Users;
 
 async function Register(req, res, next) {

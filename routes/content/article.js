@@ -9,13 +9,13 @@ router.get('/', (req, res, next) => {
 });
 
 // Create Article
-router.post('/create',[contentMiddleware.contentMiddleware], ArticleControllers.CreateArticle);
+router.post('/',[contentMiddleware.contentMiddleware], ArticleControllers.CreateArticle);
 
 // Update Article
-router.put('/update/:id', ArticleControllers.UpdateArticle);
+router.put('/:id', ArticleControllers.UpdateArticle);
 
 // Delete Article
-router.delete('/delete/:id', ArticleControllers.DeleteArticle);
+router.delete('/:id', ArticleControllers.DeleteArticle);
 
 // Read Articles
 router.get('/read', ArticleControllers.ReadArticle);

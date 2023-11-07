@@ -3,7 +3,7 @@ const router = express.Router();
 const UserControllers = require('../controllers/user/user');
 const AuthMiddleware = require('../middleware/auth/bodyValidation'); // Import middleware
 
-// Welcome message for the users route
+// Main Routing
 router.get('/', (req, res, next) => {
     res.send('Welcome to the Users API');
 });
