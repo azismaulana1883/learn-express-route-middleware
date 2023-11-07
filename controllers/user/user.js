@@ -5,17 +5,17 @@ function CreateUser(req, res, next) {
 }
 
 function UpdateUser(req, res, next) {
-    // Handle user update logic here
+    
     res.send('User updated successfully')
 }
 
 function DeleteUser(req, res, next) {
-    // Handle user deletion logic here
+
     res.send('User deleted successfully')
 }
 
 function ReadUser(req, res, next) {
-    // Handle user retrieval logic here
+    
     res.send('Here are the users')
 }
 

@@ -1,4 +1,4 @@
-// middleware/auth/bodyValidation.js
+
 
 function contentMiddleware(req, res, next) {
     const { article, id } = req.body;
@@ -10,7 +10,6 @@ function contentMiddleware(req, res, next) {
         });
     }
 
-    // Jika data lengkap, lanjutkan ke rute berikutnya
     next();
 }
 

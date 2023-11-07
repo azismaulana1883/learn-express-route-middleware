@@ -9,8 +9,6 @@ function bodyValidation(req, res, next) {
             text: 'Data tidak ada',
         });
     }
-
-    // Jika data lengkap, lanjutkan ke rute berikutnya
     next();
 }
 
