@@ -4,9 +4,8 @@ const router = express.Router();
 const ArticleControllers = require('../../controllers/content/article');
 const contentMiddleware = require('../../middleware/content/contentMiddleware')
 
-router.get('/', (req, res, next) => {
-    res.send('Welcome to the Content API');
-});
+// Read Articles
+router.get('/', ArticleControllers.ReadArticle);
 
 // Create Article
 router.post('/',[contentMiddleware.contentMiddleware], ArticleControllers.CreateArticle);
@@ -17,7 +16,8 @@ router.put('/:id', ArticleControllers.UpdateArticle);
 // Delete Article
 router.delete('/:id', ArticleControllers.DeleteArticle);
 
-// Read Articles
-router.get('/read', ArticleControllers.ReadArticle);
+
+// show single article
+router.get('/:id', ArticleControllers.Show);
 
 module.exports = router;

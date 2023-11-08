@@ -78,9 +78,28 @@ async function ReadArticle(req, res, next) {
     }
 }
 
+async function Show(req, res, next) {
+    try {
+        const articleId = req.params.id; 
+        const existingArticle = await UserContents.findByPk(articleId);
+        
+        if (!existingArticle) {
+            return res.status(404).json({
+                message: 'Article not found',
+                statusCode: 404
+            });
+        } else {
+            res.json(existingArticle);
+        }
+    } catch (error) {
+        next(error);
+    }
+}
+
 module.exports = {
     CreateArticle,
     UpdateArticle,
     DeleteArticle,
-    ReadArticle
+    ReadArticle,
+    Show
 }

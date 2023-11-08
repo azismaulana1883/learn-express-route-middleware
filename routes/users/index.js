@@ -3,16 +3,16 @@ const router = express.Router();
 
 const UserControllers = require('../../controllers/user/user');
 
-// Create User
-router.post('/create', UserControllers.CreateUser);
-
 // Update User
-router.put('/update/:id', UserControllers.UpdateUser);
+router.put('/:id', UserControllers.UpdateUser);
 
 // Delete User
-router.delete('/delete/:id', UserControllers.DeleteUser);
+router.delete('/:id', UserControllers.DeleteUser);
 
 // Read Users
-router.get('/read', UserControllers.ReadUser);
+router.get('/', UserControllers.ReadUser);
+
+// Read Single User
+router.get('/:id', UserControllers.Show);
 
 module.exports = router;
