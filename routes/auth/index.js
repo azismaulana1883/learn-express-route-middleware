@@ -14,4 +14,7 @@ router.post('/register', [AuthMiddleware.bodyValidation], AuthControllers.Regist
 // Login
 router.post('/login',[AuthMiddleware.bodyValidation], AuthControllers.Login);
 
+//register Mongo
+router.post('/registermongo',AuthControllers.RegisterMongo)
+
 module.exports = router;
